@@ -2,12 +2,16 @@ import { vitePlugin as remix } from "@remix-run/dev";
 import { installGlobals } from "@remix-run/node";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import { vercelPreset } from "@vercel/remix/vite";
 
 installGlobals();
 
 export default defineConfig({
-  plugins: [remix(), tsconfigPaths()],
+  plugins: [remix(
+    { presets: [vercelPreset()] }
+  ), tsconfigPaths()],
   server: {
+    port: 3000,
     fs: {
       // Restrict files that could be served by Vite's dev server.  Accessing
       // files outside this directory list that aren't imported from an allowed

@@ -7,7 +7,7 @@ function PokemonNowWeight() {
 
 
   return (
-    <div>
+    <div style={ { marginTop: '4px' } }>
       weight: { weight }
     </div>
   )
